@@ -24,8 +24,8 @@ Async.each(persons, function (person, callback) {
         return console.log(err);
     }
 
-    var agg = Person.aggregate({$match: {age: {$gt: 30}}});
-    agg.append([{$match: {name: /^t/i}}, {$match: {name: /ster$/i}}]);
+    var agg = Person.aggregate();
+    agg.append([{$match: {age: {$gt: 30}}}, {$match: {name: /ster$/i}}]);
 
     agg.exec(function (e, d) {
         console.log(Util.inspect(e || d, {depth: 10}));
